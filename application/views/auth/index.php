@@ -1,195 +1,118 @@
-<div class="page-content">
-    <section class="row">
-        <div class="col-12 col-lg-12">
-            <div class="row">
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon purple mb-2">
-                                        <i class="iconly-boldShow"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Profile Views</h6>
-                                    <h6 class="font-extrabold mb-0">112.000</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon blue mb-2">
-                                        <i class="iconly-boldProfile"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Followers</h6>
-                                    <h6 class="font-extrabold mb-0">183.000</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon green mb-2">
-                                        <i class="iconly-boldAdd-User"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Following</h6>
-                                    <h6 class="font-extrabold mb-0">80.000</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon red mb-2">
-                                        <i class="iconly-boldBookmark"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Saved Post</h6>
-                                    <h6 class="font-extrabold mb-0">112</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $title; ?></title>
+    <link rel="stylesheet" href="<?= base_url('assets/template/'); ?>assets/css/main/app.css">
+    <link rel="shortcut icon" href="<?= base_url('assets/template/'); ?>assets/images/logo/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= base_url('assets/template/'); ?>assets/images/logo/favicon.png" type="image/png">
+</head>
+
+<body>
+    <nav class="navbar navbar-light">
+        <div class="container d-block">
+            <a href="index.html"><i class="bi bi-chevron-left"></i></a>
+            <a class="navbar-brand ms-4" href="index.html">
+                <img src="assets/images/logo/logo.svg">
+            </a>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-header">
+                <h2 class="page-heading">SELAMAT DATANG DI APLIKASI EVALUASI SIMRS JIWA BANDA ACEH</h2>
             </div>
-            <div class="row">
+            <div class="card-body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus nemo quasi labore expedita? Veritatis
+                    at maxime id voluptates excepturi molestiae possimus blanditiis dicta consequuntur maiores suscipit,
+                    eveniet neque obcaecati doloribus.</p>
+            </div>
+        </div>
+        <!-- Bordered table start -->
+        <section class="section">
+            <div class=" row" id="table-bordered">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Profile Visit</h4>
+                            <h4 class="card-title">Bordered table</h4>
                         </div>
-                        <div class="card-body">
-                            <div id="chart-profile-visit"></div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <p class="card-text">Add <code>.table-bordered</code> for borders on all sides of the table
+                                    and
+                                    cells. For
+                                    Inverse Dark Table, add <code>.table-dark</code> along with
+                                    <code>.table-bordered</code>.
+                                </p>
+                            </div>
+                            <!-- table bordered -->
+                            <form class="form" action="<?= base_url('auth/save/'); ?>" method="POST">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Pernyataan</th>
+                                                <?php foreach ($skalalikert as $sl) : ?>
+                                                    <th><?= $sl->keterangan; ?></th>
+                                                <?php endforeach; ?>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($kriteria as $kt) : ?>
+
+                                                <tr>
+                                                    <td class="text-bold-500"><?= $kt->nama_kriteria; ?></td>
+
+                                                    <?php
+                                                    foreach ($skalalikert as $sl) : ?>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="kriterii_<?= $kt->id_kriteria ?>" id="flexRadioDefault.1" data-parsley-required="true" value="<?= $sl->nilai; ?>">
+                                                                <label class="form-check-label form-label" for="flexRadioDefault1"><?= $sl->nilai; ?>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                    <?php endforeach; ?>
+                                                </tr>
+
+                                            <?php
+                                            endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">
+                                            Submit
+                                        </button>
+                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-xl-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Profile Visit</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="d-flex align-items-center">
-                                        <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
-                                            <use xlink:href="assets/images/bootstrap-icons.svg#circle-fill" />
-                                        </svg>
-                                        <h5 class="mb-0 ms-3">Europe</h5>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <h5 class="mb-0">862</h5>
-                                </div>
-                                <div class="col-12">
-                                    <div id="chart-europe"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="d-flex align-items-center">
-                                        <svg class="bi text-success" width="32" height="32" fill="blue" style="width:10px">
-                                            <use xlink:href="assets/images/bootstrap-icons.svg#circle-fill" />
-                                        </svg>
-                                        <h5 class="mb-0 ms-3">America</h5>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <h5 class="mb-0">375</h5>
-                                </div>
-                                <div class="col-12">
-                                    <div id="chart-america"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="d-flex align-items-center">
-                                        <svg class="bi text-danger" width="32" height="32" fill="blue" style="width:10px">
-                                            <use xlink:href="assets/images/bootstrap-icons.svg#circle-fill" />
-                                        </svg>
-                                        <h5 class="mb-0 ms-3">Indonesia</h5>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <h5 class="mb-0">1025</h5>
-                                </div>
-                                <div class="col-12">
-                                    <div id="chart-indonesia"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-8">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Latest Comments</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-lg">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Comment</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar avatar-md">
-                                                        <img src="assets/images/faces/5.jpg">
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0">Congratulations on your graduation!</p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar avatar-md">
-                                                        <img src="assets/images/faces/2.jpg">
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Si Ganteng</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0">Wow amazing design! Can you make another tutorial for
-                                                    this design?</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+        </section>
+        <!-- Bordered table end -->
+    </div>
+
+
+
+    <script src="<?= base_url('assets/template/'); ?>assets/js/bootstrap.js"></script>
+    <script src="<?= base_url('assets/template/'); ?>assets/js/app.js"></script>
+
+    <script src="<?= base_url('assets/template/'); ?>assets/extensions/jquery/jquery.min.js"></script>
+    <script src="<?= base_url('assets/template/'); ?>assets/extensions/parsleyjs/parsley.min.js"></script>
+    <script src="<?= base_url('assets/template/'); ?>assets/js/pages/parsley.js"></script>
+
+</body>
+
+</html>

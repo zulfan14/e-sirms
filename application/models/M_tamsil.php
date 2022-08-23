@@ -22,4 +22,12 @@ class M_tamsil extends CI_Model
         // FROM Orders
         // INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;"
     }
+    public function get_responden()
+    {
+        $this->db->select('a.*, b.nama_pendidikan, c.nama_jabatan');
+        $this->db->join('tb_pendidikan b', 'b.id_pendidikan = a.id_pendidikan');
+        $this->db->join('tb_jabatan c', 'c.id_jabatan = a.id_jabatan');
+        $this->db->order_by('a.id_responden', 'asc');
+        return $this->db->get('tb_responden a')->result();
+    }
 }

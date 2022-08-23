@@ -5,6 +5,8 @@ class Auth extends CI_Controller
 {
     public function index()
     {
-        echo 'selamat datang';
+        $data['skalalikert'] = $this->m_tamsil->get('tb_skalalikert');
+        $data['kriteria'] = $this->m_tamsil->get('tb_kriteria');
+        $this->load->view('auth/index', $data);
     }
 }

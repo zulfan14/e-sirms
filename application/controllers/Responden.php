@@ -8,33 +8,45 @@ class responden extends CI_Controller
         $data['title'] = 'RESPONDEN';
         $data['heading'] = 'FORM INPUT RESPONDEN';
 
-        $data['responden'] = $this->m_tamsil->get('tb_responden');
+        $data['responden'] = $this->m_tamsil->get_responden();
+        $data['pendidikan'] = $this->m_tamsil->get('tb_pendidikan');
+        $data['jabatan'] = $this->m_tamsil->get('tb_jabatan');
 
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('responden/index', $data);
         $this->load->view('template/footer');
     }
-    public function tambah_skalalikert()
+    public function tambah_responden()
     {
-        $this->form_validation->set_rules('nilai', 'Nilai', 'required|trim|is_unique[tb_skalalikert.nilai]');
-        $this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim|is_unique[tb_skalalikert.keterangan]');
+        $this->form_validation->set_rules('id', 'iD', 'required|trim|is_unique[tb_responden.id_responden]');
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('tempat', 'Tempat', 'required|trim');
+        $this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim');
+        $this->form_validation->set_rules('pendidikan', 'Pendidikan', 'required|trim');
+        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Nilai atau Keterangan skalalikert Sudah Pernah Digunakan!!</div>');
-            redirect('skalalikert');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">ID Responden Sudah Pernah Digunakan!!</div>');
+            redirect('responden');
         } else {
             $data = [
-                'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
-                'nilai' => htmlspecialchars($this->input->post('nilai', true))
+                'id_responden' => htmlspecialchars($this->input->post('id', true)),
+                'nama_responden' => htmlspecialchars($this->input->post('nama', true)),
+                'tempat_lahir' => htmlspecialchars($this->input->post('tempat', true)),
+                'tanggal_lahir' => htmlspecialchars($this->input->post('tanggal', true)),
+                'id_pendidikan' => htmlspecialchars($this->input->post('pendidikan', true)),
+                'id_jabatan' => htmlspecialchars($this->input->post('jabatan', true))
             ];
 
+            // echo '<pre>';
             // var_dump($data);
             // die;
+            // echo '</pre>';
 
-            $this->m_tamsil->insert('tb_skalalikert', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Nama skalalikert Berhasil di Tambah!!</div>');
-            redirect('skalalikert');
+            $this->m_tamsil->insert('tb_responden', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Responden Berhasil di Tambah!!</div>');
+            redirect('responden');
         }
     }
 }
