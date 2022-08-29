@@ -9,7 +9,7 @@ class Admin extends CI_Controller
         $data['heading'] = 'SELAMAT DATANG DI APLIKASI EVALUASI SIMRS JIWA BANDA ACEH';
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
-        $this->load->view('auth/index');
+        $this->load->view('admin/index');
         $this->load->view('template/footer');
     }
 }
