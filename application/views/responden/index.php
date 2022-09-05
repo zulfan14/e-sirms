@@ -24,6 +24,10 @@
                                                         <label for="nama" class="form-label">Nama Responden</label>
                                                         <input type="text" id="nama" class="form-control" placeholder="Input Nama Responden" name="nama" data-parsley-required="true" />
                                                     </div>
+                                                    <div class="form-group mandatory">
+                                                        <label for="password" class="form-label">Password Responden</label>
+                                                        <input type="password" id="password" class="form-control" placeholder="Input password Responden" name="password" data-parsley-required="true" />
+                                                    </div>
                                                 </div>
                                                 <div class="col-lg-12 col-12">
                                                     <div class="form-group mandatory">

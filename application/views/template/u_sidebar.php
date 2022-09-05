@@ -36,62 +36,13 @@
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item ">
-                            <a href="<?= base_url('admin'); ?>" class='sidebar-link'>
+                            <a href="<?= base_url('user'); ?>" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-
                         <li class="sidebar-item  ">
-                            <a href="<?= base_url('variabel'); ?>" class='sidebar-link'>
-                                <i class="bi bi-file-earmark-zip-fill"></i>
-                                <span>Variabel</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="<?= base_url('kriteria'); ?>" class='sidebar-link'>
-                                <i class="bi bi-question-octagon-fill"></i>
-                                <span>kriteria</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="<?= base_url('pendidikan'); ?>" class='sidebar-link'>
-                                <i class="bi bi-lamp-fill"></i>
-                                <span>Pendidikan</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="<?= base_url('jabatan'); ?>" class='sidebar-link'>
-                                <i class="bi bi-bag-fill"></i>
-                                <span>Jabatan</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item ">
-                            <a href="<?= base_url('responden'); ?>" class='sidebar-link'>
-                                <i class="bi bi-people-fill"></i>
-                                <span>Responden</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="<?= base_url('skalalikert'); ?>" class='sidebar-link'>
-                                <i class="bi bi-bar-chart-fill"></i>
-                                <span>Skala Likert</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="<?= base_url('laporan'); ?>" class='sidebar-link'>
-                                <i class="bi bi-file-earmark-zip-fill"></i>
-                                <span>Laporan</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="<?= base_url('admin/user'); ?>" class='sidebar-link'>
-                                <i class="bi bi-person-fill"></i>
-                                <span>Admin</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="<?= base_url('admin/editpassword'); ?>" class='sidebar-link'>
+                            <a href="<?= base_url('user/editpassword'); ?>" class='sidebar-link'>
                                 <i class="bi bi-key-fill"></i>
                                 <span>Edit Password</span>
                             </a>

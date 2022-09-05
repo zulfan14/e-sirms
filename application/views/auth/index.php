@@ -1,53 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title; ?></title>
-    <link rel="stylesheet" href="<?= base_url('assets/template/'); ?>assets/css/main/app.css">
-    <link rel="shortcut icon" href="<?= base_url('assets/template/'); ?>assets/images/logo/favicon.svg" type="image/x-icon">
-    <link rel="shortcut icon" href="<?= base_url('assets/template/'); ?>assets/images/logo/favicon.png" type="image/png">
-</head>
-
-<body>
-    <nav class="navbar navbar-light">
-        <div class="container d-block">
-            <a href="index.html"><i class="bi bi-chevron-left"></i></a>
-            <a class="navbar-brand ms-4" href="index.html">
-                <img src="assets/images/logo/logo.svg">
-            </a>
-        </div>
-    </nav>
-
-
     <div class="container">
         <div class="card mt-5">
-            <div class="card-header">
-                <h2 class="page-heading">SELAMAT DATANG DI APLIKASI EVALUASI SIMRS JIWA BANDA ACEH</h2>
-            </div>
             <div class="card-body">
-                <p>Silahkan Isikan Data Anda</p>
-            </div>
-            <div class="card-body">
-                <form class="form" action="<?= base_url('auth/save/'); ?>" method="POST">
+                <form class="form" action="<?= base_url('user/save/'); ?>" method="POST">
                     <div class="row">
                         <div class="col-lg-12 col-12">
                             <div class="form-group mandatory">
                                 <label for="id" class="form-label">Id Responden</label>
-                                <input type="text" id="id" class="form-control" placeholder="Input id Anda" name="id" data-parsley-required="true" />
+                                <input type="text" id="id" class="form-control" placeholder="Input id Anda" name="id" data-parsley-required="true" value="<?= $user2['id_responden'] ?>" readonly />
                             </div>
                         </div>
                         <div class="col-lg-12 col-12">
                             <div class="form-group mandatory">
                                 <label for="nama" class="form-label">Nama Responden</label>
-                                <input type="read" id="nama" class="form-control" placeholder="Input Nama pendidikan" name="nama" value="maun" data-parsley-required="true" />
+                                <input type="read" id="nama" class="form-control" placeholder="Input Nama pendidikan" name="nama" value="<?= $user2['nama_responden'] ?>" data-parsley-required="true" readonly />
                             </div>
                         </div>
                         <div class="col-lg-12 col-12">
                             <div class="form-group mandatory">
                                 <label for="nama" class="form-label">Nama Bagian</label>
-                                <input type="read" id="jabatan" class="form-control" placeholder="Input jabatan pendidikan" name="jabatan" value="Staff" data-parsley-required="true" />
+                                <input type="read" id="jabatan" class="form-control" placeholder="Input jabatan pendidikan" name="jabatan" value="<?= $user2['nama_jabatan'] ?>" data-parsley-required="true" readonly />
                             </div>
                         </div>
                     </div>
@@ -68,9 +39,6 @@
                                             <p class="card-text">Nilai Kriteria : SS = Sangat Setuju TS = Tidak Setuju
                                                 SS = Setuju STS = Sangat Tidak Setuju
                                             </p>
-                                            <button type="submit" class="btn btn-danger me-1 mb-1">
-                                                Next
-                                            </button>
                                         </div>
                                         <!-- table bordered -->
                                         <div class="card-body">
@@ -153,6 +121,6 @@
     <script src="<?= base_url('assets/template/'); ?>assets/extensions/parsleyjs/parsley.min.js"></script>
     <script src="<?= base_url('assets/template/'); ?>assets/js/pages/parsley.js"></script>
 
-</body>
+    </body>
 
-</html>
+    </html>

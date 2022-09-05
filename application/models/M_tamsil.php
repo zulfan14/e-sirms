@@ -10,6 +10,14 @@ class M_tamsil extends CI_Model
     {
         return $this->db->get($tabel)->result();
     }
+    function inputAnswer($table, $data)
+    {
+        return $this->db->insert_batch($table, $data);
+    }
+    public function get_data($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
 
     public function get_data_kriteria()
     {
@@ -35,7 +43,17 @@ class M_tamsil extends CI_Model
         $this->db->select('a.*, b.nama_pendidikan, c.nama_jabatan');
         $this->db->join('tb_pendidikan b', 'b.id_pendidikan = a.id_pendidikan');
         $this->db->join('tb_jabatan c', 'c.id_jabatan = a.id_jabatan');
+        $this->db->where('a.role_id=2');
         $this->db->order_by('a.id_responden', 'asc');
         return $this->db->get('tb_responden a')->result();
+    }
+    public function get_user($nama)
+    {
+        $this->db->select('a.*, b.nama_pendidikan, c.nama_jabatan');
+        $this->db->join('tb_pendidikan b', 'b.id_pendidikan = a.id_pendidikan');
+        $this->db->join('tb_jabatan c', 'c.id_jabatan = a.id_jabatan');
+        $this->db->where('nama_responden', $nama);
+        // $this->db->order_by('a.id_responden', 'asc');
+        return $this->db->get('tb_responden a');
     }
 }

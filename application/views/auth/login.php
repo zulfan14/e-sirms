@@ -1,38 +1,54 @@
-<section id="multiple-column-form">
-    <div class="row match-height">
-        <div class="col-12">
-            <div class="card">
+<body>
+
+
+    <!-- <div class="container"> -->
+    <div class="container" style="height: 100vh;">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="card col-md-5 col-sm-8">
+                <!-- <div class="card-header">
+                <h4 class="card-title">Single Layout</h4>
+            </div> -->
                 <div class="card-header">
-                    <h4 class="card-title">Login Aplikasi</h4>
+                    <h3>HARAP LOGIN TERLEBIH DAHULU</h3>
                 </div>
-                <div class="card-content">
-                    <div class="card-body">
-                        <form class="form" data-parsley-validate>
-                            <div class="row">
-                                <div class="col-md-12 col-12">
-                                    <div class="form-group mandatory">
-                                        <label for="first-name-column" class="form-label">Username</label>
-                                        <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="fname-column" data-parsley-required="true">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 col-12">
-                                    <div class="form-group">
-                                        <label for="country-floating" class="form-label">Password</label>
-                                        <input type="text" id="country-floating" class="form-control" name="country-floating" placeholder="Country">
+                <section id="basic-horizontal-layouts">
+                    <div class="row match-height">
+                        <div class="col-md-10 col-10">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form form-horizontal" action="<?= base_url('auth'); ?>" method="POST">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>username</label>
+                                                    </div>
+                                                    <div class="col-md-8 form-group">
+                                                        <input type="text" id="nama" class="form-control" name="nama" placeholder="Masukkan Username Anda" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Password</label>
+                                                    </div>
+                                                    <div class="col-md-8 form-group">
+                                                        <input type="password" id="password" class="form-control" name="password" placeholder="Password" />
+                                                    </div>
+                                                    <div class="col-sm-12 d-flex justify-content-end">
+                                                        <button type="submit" class="btn btn-primary me-1 mb-1">
+                                                            LOGIN
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
     </div>
-</section>
+</body>
+
+</html>

@@ -5,67 +5,28 @@ class Auth extends CI_Controller
 {
     public function index()
     {
-        $data['skalalikert'] = $this->m_tamsil->get('tb_skalalikert');
-        // $data['kriteria'] = $this->m_tamsil->get('tb_kriteria');
-        $data['variabel'] = $this->m_tamsil->get('tb_variabel');
-        $this->load->view('auth/index', $data);
+        if ($this->session->userdata('name')) {
+            redirect('auth/selesai');
+        }
+        $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'INPUT JABATAN';
+            $data['heading'] = 'FORM INPUT JABATAN';
+            $this->load->view('template/header', $data);
+            // $this->load->view('template/sidebar', $data);
+            $this->load->view('auth/login', $data);
+        } else {
+            $this->_login();
+        }
     }
+
     public function selesai()
     {
         $this->load->view('auth/selesai');
     }
-    public function save()
-    {
-        $variabel = $this->db->query("SELECT * FROM tb_variabel");
-        $id_user = $this->input->post('id');
-        $id_kriteria = $this->input->post('id_kriteria');
-        $id_variabel = $this->input->post('id_variabel');
-        $skala = $this->input->post('skala');
-        $dataarray = [];
 
-        foreach ($variabel->result_array() as $vb) {
-            $kriteria = $this->db->query("SELECT * FROM tb_kriteria where id_variabel = '" . $vb['id_variabel'] . "' ");
-            foreach ($kriteria->result_array() as $kt) {
-                if ($skala[$kt['id_kriteria']] == 1) {
-                    $sts = 1;
-                    $ts = 0;
-                    $s = 0;
-                    $ss = 0;
-                } elseif ($skala[$kt['id_kriteria']] == 2) {
-                    $sts = 0;
-                    $ts = 1;
-                    $s = 0;
-                    $ss = 0;
-                } elseif ($skala[$kt['id_kriteria']] == 3) {
-                    $sts = 1;
-                    $ts = 0;
-                    $s = 3;
-                    $ss = 0;
-                } else {
-                    $sts = 0;
-                    $ts = 0;
-                    $s = 0;
-                    $ss = 1;
-                }
-
-                array_push($dataarray, [
-                    'id_kriteria' => $id_kriteria[$kt['id_kriteria']],
-                    'id_variabel' => $id_variabel[$kt['id_kriteria']],
-                    'id_user' => $id_user,
-                    'jawabanskala' => $skala[$kt['id_kriteria']],
-                    'skalasts' => $sts,
-                    'skalats' => $ts,
-                    'skalas' => $s,
-                    'skalass' => $ss,
-                ]);
-            }
-            // echo '<pre>';
-            // var_dump($kriteria->result_array());
-            // die;
-            // echo '</pre>';
-            redirect('auth/selesai');
-        }
-    }
     public function save2()
     {
         // var_dump($_POST);
@@ -112,6 +73,52 @@ class Auth extends CI_Controller
         $this->load->view('template/header', $data);
         // $this->load->view('template/sidebar', $data);
         $this->load->view('auth/login', $data);
-        $this->load->view('template/footer');
+        // $this->load->view('template/footer');
+    }
+    private function _login()
+    {
+        $name = $this->input->post('nama');
+        $password = $this->input->post('password');
+
+        $user = $this->m_tamsil->get_data(['nama_responden' => $name], 'tb_responden')->row_array();
+
+        // Jika Usernya Ada
+        if ($user) {
+            // Jika Usernya ada
+
+            // Cek Password
+            if (password_verify($password, $user['password'])) {
+
+                $data = [
+                    'nama_responden' => $user['nama_responden'],
+                    'role_id' => $user['role_id'],
+                    'id_responden' => $user['id_responden']
+                ];
+                // var_dump($data);
+                // die;
+                $this->session->set_userdata($data);
+                if ($user['role_id'] == 1) {
+                    redirect('admin');
+                } else {
+                    redirect('user');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Maaf, password anda salah! </div>');
+                redirect('auth');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Maaf, name anda belum terdaftar! </div>');
+            redirect('auth');
+        }
+    }
+    public function logout()
+    {
+        $this->session->unset_userdata('name');
+        $this->session->unset_userdata('role_id');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Selamat anda berhasil keluar! </div>');
+        redirect('auth');
     }
 }

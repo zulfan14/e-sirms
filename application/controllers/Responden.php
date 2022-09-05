@@ -36,7 +36,9 @@ class responden extends CI_Controller
                 'tempat_lahir' => htmlspecialchars($this->input->post('tempat', true)),
                 'tanggal_lahir' => htmlspecialchars($this->input->post('tanggal', true)),
                 'id_pendidikan' => htmlspecialchars($this->input->post('pendidikan', true)),
-                'id_jabatan' => htmlspecialchars($this->input->post('jabatan', true))
+                'id_jabatan' => htmlspecialchars($this->input->post('jabatan', true)),
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'role_id' => '2',
             ];
 
             // echo '<pre>';
