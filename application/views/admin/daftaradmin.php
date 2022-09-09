@@ -11,16 +11,22 @@
                                         <div class="col-lg-6 col-6">
                                             <?= $this->session->flashdata('message'); ?>
                                         </div>
-                                        <form class="form" action="<?= base_url('skalalikert/tambah_skalalikert'); ?>" method="POST" data-parsley-validate>
+                                        <form class="form" data-parsley-validate action="<?= base_url('admin/tambah_admin'); ?>" method="POST">
                                             <div class="row">
                                                 <div class="col-lg-12 col-12">
                                                     <div class="form-group mandatory">
-                                                        <label for="nilai" class="form-label">nilai</label>
-                                                        <input type="number" id="nilai" class="form-control" placeholder="Input nilai Skala Likert" name="nilai" data-parsley-required="true" data-parsley-unique="true" />
+                                                        <label for="id" class="form-label">ID Admin</label>
+                                                        <input type="number" id="id" class="form-control" placeholder="Input ID Admin" name="id" data-parsley-required="true" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-12">
+                                                    <div class="form-group mandatory">
+                                                        <label for="nama" class="form-label">Username</label>
+                                                        <input type="text" id="nama" class="form-control" placeholder="Input Username" name="nama" data-parsley-required="true" />
                                                     </div>
                                                     <div class="form-group mandatory">
-                                                        <label for="keterangan" class="form-label">Keterangan</label>
-                                                        <input type="text" id="keterangan" class="form-control" placeholder="Input Keterangan Skala Likert" name="keterangan" data-parsley-required="true" />
+                                                        <label for="password" class="form-label">Password Admin</label>
+                                                        <input type="password" id="password" class="form-control" placeholder="Input password Admin" name="password" data-parsley-required="true" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -41,30 +47,32 @@
                     </div>
                 </section>
                 <!-- // Basic multiple Column Form section end -->
+
+                <!-- Basic Tables start -->
                 <section class="section">
                     <div class="card">
-                        <div class="card-header">Jquery Datatable</div>
+                        <div class="card-header">Data admin</div>
                         <div class="card-body">
                             <table class="table" id="table1">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nilai</th>
-                                        <th>Keterangan</th>
+                                        <th>ID admin</th>
+                                        <th>Username</th>
                                         <th colspan="2">aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $no = 1;
-                                    foreach ($skalalikert as $sl) : ?>
+                                    foreach ($admin as $rp) : ?>
                                         <tr>
                                             <td><?= $no++; ?></td>
-                                            <td><?= $sl->nilai; ?></td>
-                                            <td><?= $sl->keterangan; ?></td>
-                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('skalalikert/hapusskalalikert/' . $sl->id_skalalikert, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
+                                            <td><?= $rp->id_responden; ?></td>
+                                            <td><?= $rp->nama_responden; ?></td>
+                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('admin/hapusadmin/' . $rp->id_responden, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
                                             </td>
-                                            <td><?= anchor('skalalikert/editskalalikert/' . $sl->id_skalalikert, '<div class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></div>'); ?>
+                                            <td><?= anchor('admin/editadmin/' . $rp->id_responden, '<div class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></div>'); ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -73,7 +81,6 @@
                         </div>
                     </div>
                 </section>
-
 
             </div>
     </section>

@@ -51,4 +51,14 @@ class responden extends CI_Controller
             redirect('responden');
         }
     }
+    public function hapusresponden($id_responden)
+    {
+
+        $where = [
+            'id_responden' => $id_responden
+        ];
+        $this->m_tamsil->hapus_data($where, 'tb_responden');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Responden Berhasil di Hapus!!</div>');
+        redirect('responden');
+    }
 }

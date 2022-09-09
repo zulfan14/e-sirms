@@ -85,7 +85,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item  ">
-                            <a href="<?= base_url('admin/user'); ?>" class='sidebar-link'>
+                            <a href="<?= base_url('admin/daftaradmin'); ?>" class='sidebar-link'>
                                 <i class="bi bi-person-fill"></i>
                                 <span>Admin</span>
                             </a>

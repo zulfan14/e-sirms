@@ -109,7 +109,7 @@
                                             <td><?= $rp->tanggal_lahir; ?></td>
                                             <td><?= $rp->nama_pendidikan; ?></td>
                                             <td><?= $rp->nama_jabatan; ?></td>
-                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('admin/hapusresponden/' . $rp->id_responden, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
+                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('responden/hapusresponden/' . $rp->id_responden, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
                                             </td>
                                             <td><?= anchor('admin/editresponden/' . $rp->id_responden, '<div class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></div>'); ?>
                                             </td>

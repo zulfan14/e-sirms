@@ -56,9 +56,9 @@
                                         <tr>
                                             <td><?= $no++; ?></td>
                                             <td><?= $pd->nama_pendidikan; ?></td>
-                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('admin/hapuspendidikan/' . $pd->id_pendidikan, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
+                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('pendidikan/hapuspendidikan/' . $pd->id_pendidikan, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
                                             </td>
-                                            <td><?= anchor('admin/editpendidikan/' . $pd->id_pendidikan, '<div class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></div>'); ?>
+                                            <td><?= anchor('pendidikan/editpendidikan/' . $pd->id_pendidikan, '<div class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></div>'); ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

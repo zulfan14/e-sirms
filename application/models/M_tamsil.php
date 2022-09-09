@@ -18,6 +18,15 @@ class M_tamsil extends CI_Model
     {
         return $this->db->get_where($table, $where);
     }
+    public function update_data($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
+    public function hapus_data($where, $tabel)
+    {
+        $this->db->delete($tabel, $where);
+    }
 
     public function get_data_kriteria()
     {
@@ -44,6 +53,15 @@ class M_tamsil extends CI_Model
         $this->db->join('tb_pendidikan b', 'b.id_pendidikan = a.id_pendidikan');
         $this->db->join('tb_jabatan c', 'c.id_jabatan = a.id_jabatan');
         $this->db->where('a.role_id=2');
+        $this->db->order_by('a.id_responden', 'asc');
+        return $this->db->get('tb_responden a')->result();
+    }
+    public function get_admin()
+    {
+        $this->db->select('a.*, b.nama_pendidikan, c.nama_jabatan');
+        $this->db->join('tb_pendidikan b', 'b.id_pendidikan = a.id_pendidikan');
+        $this->db->join('tb_jabatan c', 'c.id_jabatan = a.id_jabatan');
+        $this->db->where('a.role_id=1');
         $this->db->order_by('a.id_responden', 'asc');
         return $this->db->get('tb_responden a')->result();
     }

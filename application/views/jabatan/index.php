@@ -56,9 +56,9 @@
                                         <tr>
                                             <td><?= $no++; ?></td>
                                             <td><?= $jb->nama_jabatan; ?></td>
-                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('admin/hapusjabatan/' . $jb->id_jabatan, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
+                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('jabatan/hapusjabatan/' . $jb->id_jabatan, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
                                             </td>
-                                            <td><?= anchor('admin/editjabatan/' . $jb->id_jabatan, '<div class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></div>'); ?>
+                                            <td><?= anchor('jabatan/editjabatan/' . $jb->id_jabatan, '<div class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></div>'); ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

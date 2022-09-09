@@ -8,6 +8,9 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
+                                        <div class="col-lg-6 col-6">
+                                            <?= $this->session->flashdata('message'); ?>
+                                        </div>
                                         <form class="form" data-parsley-validate action="<?= base_url('kriteria/tambah_kriteria'); ?>" method="POST">
                                             <div class="row">
                                                 <div class="col-lg-12 col-12">
@@ -69,9 +72,9 @@
                                             <td><?= $no++; ?></td>
                                             <td><?= $kt->nama_kriteria; ?></td>
                                             <td><?= $kt->nm_variabel; ?></td>
-                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('admin/hapuskriteria/' . $kt->id_kriteria, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
+                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('kriteria/hapuskriteria/' . $kt->id_kriteria, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
                                             </td>
-                                            <td><?= anchor('admin/editkriteria/' . $kt->id_kriteria, '<div class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></div>'); ?>
+                                            <td><?= anchor('kriteria/editkriteria/' . $kt->id_kriteria, '<div class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></div>'); ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

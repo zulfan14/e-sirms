@@ -59,9 +59,9 @@
                                         <tr>
                                             <td><?= $no++; ?></td>
                                             <td><?= $vb->nm_variabel; ?></td>
-                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('admin/hapusvariabel/' . $vb->id_variabel, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
+                                            <td onclick="javascript: return confirm('Anda Yakin Ingin Menghapus?')"><?= anchor('variabel/hapusvariabel/' . $vb->id_variabel, '<div class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"> </i></div>'); ?>
                                             </td>
-                                            <td><?= anchor('admin/editvariabel/' . $vb->id_variabel, '<div class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></div>'); ?>
+                                            <td><?= anchor('variabel/editvariabel/' . $vb->id_variabel, '<div class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></div>'); ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
