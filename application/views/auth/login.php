@@ -9,7 +9,10 @@
                 <h4 class="card-title">Single Layout</h4>
             </div> -->
                 <div class="card-header">
-                    <h3>HARAP LOGIN TERLEBIH DAHULU</h3>
+                    <h4>HARAP LOGIN TERLEBIH DAHULU</h4>
+
+                    <?= $this->session->flashdata('message'); ?>
+
                 </div>
                 <section id="basic-horizontal-layouts">
                     <div class="row match-height">

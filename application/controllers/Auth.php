@@ -108,7 +108,7 @@ class Auth extends CI_Controller
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            Maaf, name anda belum terdaftar! </div>');
+            Maaf, nama anda belum terdaftar! </div>');
             redirect('auth');
         }
     }
