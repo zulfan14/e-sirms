@@ -24,6 +24,32 @@ class laporan extends CI_Controller
         $this->load->view('laporan/index', $data);
         $this->load->view('template/footer');
     }
+    public function detail()
+    {
+        $data['title'] = 'laporan';
+        $data['heading'] = 'LAPORAN';
+
+        $data['kriteria'] = $this->db->query("SELECT COUNT(distinct id_kriteria) as total_kriteria FROM tb_respon GROUP BY (id_variabel)")->result_array();
+        $data['jumlah_variabel'] = $this->db->query("SELECT COUNT(distinct id_variabel) as total_variabel FROM tb_respon")->row_array();
+        if ($this->input->get('tanggal_mulai')) {
+            $tanggal_mulai = trim($this->security->xss_clean($this->input->get('tanggal_mulai')));
+            $tanggal_akhir = trim($this->security->xss_clean($this->input->get('tanggal_akhir')));
+            $data['responden'] = $this->db->query("SELECT COUNT(distinct id_user) as total FROM tb_respon where DATE_FORMAT(tanggal, '%Y-%d-%m') between '$tanggal_mulai' and '$tanggal_akhir'")->row_array();
+        } else {
+            $data['responden'] = $this->db->query("SELECT COUNT(distinct id_user) as total FROM tb_respon")->row_array();
+        }
+
+        $data['variabel'] = $this->m_tamsil->get('tb_variabel');
+        // echo '<pre>';
+        // var_dump($data['responden']);
+        // die;
+        echo '</pre>';
+
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('laporan/detail', $data);
+        $this->load->view('template/footer');
+    }
     public function tambah_pendidikan()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');

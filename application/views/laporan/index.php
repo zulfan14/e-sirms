@@ -2,139 +2,80 @@
     <section class="row">
         <div class="col-12 col-lg-12">
             <div class="row">
-                <!-- // Basic multiple Column Form section end -->
-                <section class="section">
-                    <div class="card">
-                        <div class="card-header">Jquery Datatable</div>
-                        <div class="card-body">
-                            <table class="table" id="table1">
-                                <thead>
-                                    <tr>
-                                    <tr class="text-center">
-                                        <th>No</th>
-                                        <th style="text-align: center;">Variabel</th>
-                                        <th style="text-align: center;">STS</th>
-                                        <th style="text-align: center;">TS</th>
-                                        <th style="text-align: center;">S</th>
-                                        <th style="text-align: center;">SS</th>
-                                        <th style="text-align: center;">Nilai Skala</th>
-                                        <th style="text-align: center;">Rata-Rata Variabel</th>
-                                    </tr>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $n = 1;
-                                    $total = 0;
-                                    foreach ($variabel as $vb) :
-                                        $querysts = $this->db->query("SELECT SUM(jawabanskala) as skala FROM tb_respon where  id_variabel=$vb->id_variabel and jawabanskala='1'  GROUP BY id_kriteria");
-                                        $queryts = $this->db->query("SELECT SUM(jawabanskala) as skala FROM tb_respon where  id_variabel=$vb->id_variabel and jawabanskala='2'  GROUP BY id_kriteria");
-                                        $querys = $this->db->query("SELECT SUM(jawabanskala) as skala FROM tb_respon where  id_variabel=$vb->id_variabel and jawabanskala='3'  GROUP BY id_kriteria");
-                                        $queryss = $this->db->query("SELECT SUM(jawabanskala) as skala FROM tb_respon where  id_variabel=$vb->id_variabel and jawabanskala='4'  GROUP BY id_kriteria");
-                                    ?>
-                                        <tr>
-                                            <td style="text-align: center;" width="20px">
-                                                <?= $n++ ?>
-                                            </td>
-                                            <td>
-                                                <?= $vb->nm_variabel; ?>
-                                            </td>
-                                            <td class="text-center">
-                                                <?php
-                                                $missts = 0;
-                                                $sts = 0;
-                                                foreach ($querysts->result() as $q) :
-                                                    $missts += $q->skala / $responden['total'];
-                                                    $sts += $q->skala;
-                                                endforeach;
-                                                echo $sts;
-                                                ?>
-                                            </td>
-                                            <td class="text-center">
-                                                <?php
-                                                $mists = 0;
-                                                $ts = 0;
-                                                foreach ($queryts->result() as $q) :
-                                                    $mists += $q->skala / $responden['total'];
-                                                    $ts += $q->skala;
-                                                endforeach;
-                                                echo $ts;
-                                                ?>
-                                            </td>
-                                            <td class="text-center">
-                                                <?php
-                                                $miss = 0;
-                                                $s = 0;
+                <section id="multiple-column-form">
+                    <div class="row match-height">
+                        <div class="col-12">
 
-                                                foreach ($querys->result() as $q) :
-                                                    $miss += $q->skala / $responden['total'];
-                                                    $s += $q->skala;
+                            <div class="card">
+                                <!-- <div class="card-content"> -->
+                                <!-- </div> -->
 
-                                                endforeach;
-                                                echo $s
-                                                ?>
-                                            </td>
-                                            <td class="text-center">
-                                                <?php
-                                                $misss = 0;
-                                                $ss = 0;
-                                                foreach ($queryss->result() as $q) :
-                                                    $misss += $q->skala / $responden['total'];
-                                                    $ss += $q->skala;
-                                                endforeach;
-                                                echo $ss;
-                                                ?>
-                                            </td>
-                                            <td class="text-center">
-                                                <?php
-                                                echo number_format($mists + $missts + $miss + $misss, 2);
-                                                ?>
-                                            </td>
-                                            <td class="text-center">
-                                                <?php
-                                                $variabel = 0;
-                                                foreach ($kriteria as $kt) :
-                                                    $total_kriteria = ($sts + $ts + $s + $ss) / $kt['total_kriteria'];
-                                                endforeach;
-                                                $total += $total_kriteria;
-                                                echo $total_kriteria;
-                                                ?>
-                                            </td>
-                                        </tr>
+                                <div id="priode" class="card-content">
+                                    <div class="card-body">
+                                        <div class="tab">
+                                            <button class="tablinks btn btn-primary me-1 mb-1 mt-4 " onclick="openCity(event, 'priode')" id="defaultOpen">Priode</button>
+                                            <button class="tablinks btn btn-primary me-1 mb-1 mt-4" onclick="openCity(event, 'lengkap')">Keseluruhan</button>
+                                        </div>
+                                        <div class="col-lg-6 col-6">
+                                            <?= $this->session->flashdata('message'); ?>
+                                        </div>
+                                        <form class="form" action="<?= base_url('laporan/detail'); ?>" method="GET" data-parsley-validate>
+                                            <div class="row">
+                                                <h4><b>Priode</b></h4>
+                                                <div class="col-lg-6 col-6">
+                                                    <div class="form-group mandatory">
+                                                        <label for="tanggal" class="form-label">Dari Tanggal</label>
+                                                        <input type="date" id="tanggal_mulai" class="form-control" placeholder="Input tanggal mulai pendidikan" name="tanggal_mulai" data-parsley-required="true" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-6">
+                                                    <div class="form-group mandatory">
+                                                        <label for="tanggal_akhir" class="form-label">Sampai Tanggal</label>
+                                                        <input type="date" id="tanggal_akhir" class="form-control" placeholder="Input tanggal_akhir pendidikan" name="tanggal_akhir" data-parsley-required="true" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 d-flex justify-content-end">
+                                                        <button type="submit" class="btn btn-primary me-1 mb-1">
+                                                            Lihat Laporan
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
 
-                                    <?php endforeach;
-                                    $nilai_hot_fit = $total / $jumlah_variabel['total_variabel'];
-                                    ?>
+                                </div>
+                                <div id="lengkap" class="card-content">
+                                    <div class="card-body">
+                                        <div class="tab">
+                                            <button class="tablinks btn btn-primary me-1 mb-5 mt-4 " onclick="openCity(event, 'priode')" id="defaultOpen">Priode</button>
+                                            <button class="tablinks btn btn-primary me-1 mb-5 mt-4" onclick="openCity(event, 'lengkap')">Keseluruhan</button>
+                                            <br>
+                                        </div>
+                                        <div class="col-lg-6 col-6">
+                                            <?= $this->session->flashdata('message'); ?>
+                                        </div>
+                                        <form class="form" action="<?= base_url('laporan/detail'); ?>" method="POST" data-parsley-validate>
+                                            <div class="row">
+                                                <h4><b>Keseluruhan</b></h4>
+                                                <div class="row">
+                                                    <div class="col-12 d-flex justify-content-end">
+                                                        <button type="submit" class="btn btn-primary me-1 mb-1">
+                                                            Lihat Laporan
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <tr>
-                                        <td colspan=2>
-                                            <h5><b>Jumlah Responden</b></h5>
-                                        </td>
-                                        <td class="text-center">
-                                            <h5><b><?= $responden['total']; ?></b></h5>
-                                        </td>
-                                        <td colspan=5></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan=2>
-                                            <h5><b>Nilai Hot Fit</b></h5>
-                                        </td>
-                                        <td class="text-center">
-                                            <h5><b><?= number_format($nilai_hot_fit, 2); ?></b></h5>
-                                        </td>
-                                        <td colspan=5></td>
-                                    </tr>
-
-                                    <!-- // $pembanding = $q->id_variabel;
-                                    // $kategori = $this->db->query("SELECT * FROM tb_kriteria where id_variabel = '$pembanding'")->result_array(); -->
-
-
-
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </section>
+                <!-- // Basic multiple Column Form section end -->
 
 
             </div>

@@ -12,8 +12,8 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'INPUT JABATAN';
-            $data['heading'] = 'FORM INPUT JABATAN';
+            $data['title'] = 'E-Sirms Login';
+            // $data['heading'] = 'FORM INPUT JABATAN';
             $this->load->view('template/header', $data);
             // $this->load->view('template/sidebar', $data);
             $this->load->view('auth/login', $data);

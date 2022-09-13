@@ -20777,6 +20777,11 @@ body .bi:before {
     position: relative
 }
 
+.card .tab {
+    position: relative !important
+}
+
+
 .card .card-title {
     font-size: 1.2rem
 }

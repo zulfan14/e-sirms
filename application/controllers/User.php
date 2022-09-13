@@ -61,21 +61,25 @@ class User extends CI_Controller
                     'skalats' => $ts,
                     'skalas' => $s,
                     'skalass' => $ss,
-                    'tanggal' => time()
+                    'tanggal' => date("Y-d-m")
 
                 ]);
             }
         }
-        foreach ($variabel->result() as $vb) {
-            $query = $this->db->query("SELECT  tb_respon.*, SUM(jawabanskala) as jawaban FROM tb_respon where jawabanskala=3  GROUP BY id_variabel")->result_array();
-            $query = $this->db->query("SELECT * FROM tb_respon where jawabanskala=3  GROUP BY id_kriteria")->result_array();
-            $this->m_tamsil->inputAnswer('tb_respon', $dataarray);
-            //     echo '<pre>';
-            //     var_dump($query);
-            //     die;
-            //     echo '</pre>';
-        }
-        redirect('auth/selesai');
+        // echo '<pre>';
+        // var_dump($dataarray);
+        // die;
+        // echo '</pre>';
+        $this->m_tamsil->inputAnswer('tb_respon', $dataarray);
+        // foreach ($variabel->result() as $vb) {
+        //     $query = $this->db->query("SELECT  tb_respon.*, SUM(jawabanskala) as jawaban FROM tb_respon where jawabanskala=3  GROUP BY id_variabel")->result_array();
+        //     $query = $this->db->query("SELECT * FROM tb_respon where jawabanskala=3  GROUP BY id_kriteria")->result_array();
+        //     //     echo '<pre>';
+        //     //     var_dump($query);
+        //     //     die;
+        //     //     echo '</pre>';
+        // }
+        redirect('user/selesai');
     }
     public function selesai()
     {
